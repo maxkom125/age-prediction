@@ -4,38 +4,11 @@ Created Jun 7 2020
 
 @author: Maksym Komarov
 """
-from keras.models import load_model
-from keras.preprocessing.image import ImageDataGenerator
 from keras.preprocessing import image
-
 import numpy as np
 from matplotlib import pyplot as plt
 
-from sklearn.metrics import mean_absolute_error
-from sklearn.metrics import r2_score
-
-
-img_path = 'test/40/005642.jpg_face.jpg'
-save_model_path = 'model'
-image_size = (256, 256)
-
-members = [load_model('model')]     #write path
-
-test_dir = 'test'
-tsdata = ImageDataGenerator()
-testdata  = tsdata.flow_from_directory(directory = test_dir,  target_size = image_size)
-
-
-def get_key(dictionary, argument):
-  for key, arg in dictionary.items():
-    if arg == argument:
-      return key
-  return "ERROR"
-
-classes = [int(get_key(testdata.class_indices, i)) for i in range(len(testdata.class_indices))]
-
-
-def ensemble_predictions(members, img_path, classes, show_image = True):
+def ensemble_predictions(members, img_path, classes, show_image = True, image_size = (256, 256)):
 	img = image.load_img(img_path, target_size=image_size)
 	testim = image.img_to_array(img)
 	testim = np.expand_dims(testim, axis=0)
@@ -99,7 +72,7 @@ def plt_predict_real(members, classes, datapaths):
   plt.show()
   return
 
-def plt_age_absolute_error(members, classes, datapaths):
+def plt_age_error(members, classes, datapaths):
   real, predict = get_real_predict(members, classes, datapaths)
   real    = np.array(real)
   predict = np.array(predict)
@@ -112,14 +85,4 @@ def plt_age_absolute_error(members, classes, datapaths):
 
 
 
-print(ensemble_metrics(members, testdata))
-
-real, predict = get_real_predict(members, classes, testdata.filepaths)
-
-print('MAE:', mean_absolute_error(real, predict))
-print('R2: ', r2_score(real, predict))
-
-plt_age_absolute_error(members, classes, testdata.filepaths)
-
-plt_predict_real(members, classes, testdata.filepaths)
 

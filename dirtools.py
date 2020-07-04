@@ -15,11 +15,11 @@ def create_directory(dir_name, classes):
     for i in classes:
         os.makedirs(os.path.join(dir_name, i))
         
-def get_agedir(apparent_age, classes):
-    if apparent_age < 0 or apparent_age > 99:
+def get_agedir(age, classes):
+    if age < 0 or age > 99:
       return 'notsorted'
     period = 100 // len(classes)
-    apparent_age /= period
-    apparent_age = floor(apparent_age)
-    apparent_age *= period
-    return str(apparent_age)
+    age /= period
+    age = floor(age)
+    age *= period
+    return str(age)

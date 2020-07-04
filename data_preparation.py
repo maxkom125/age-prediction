@@ -19,23 +19,23 @@ copy2_train_dir = 'train'
 copy2_val_dir   = 'valid'
 copy2_test_dir  = 'test'
 
-#from zipfile import ZipFile
+classes = [str(i) for i in range(0, 91, 10)]
+
 import shutil
 import os
 from dirtools import create_directory
+from dirtools import get_agedir
 
 def copy_images(file, source_dir, dest_dir):
     for line in file.readlines():
         imageinfo = line.split(',')  #name,XX,age,...
         apparent_age = round(float(imageinfo[2]))
-        directory = apparent_age // 10
-        directory *= 10
-        shutil.copy2(os.path.join(source_dir, imageinfo[0] + '_face.jpg'), \
+        if apparent_age >= 0 and apparent_age <= 99:
+            directory = get_agedir(apparent_age, classes)
+            shutil.copy2(os.path.join(source_dir, imageinfo[0] + '_face.jpg'), \
                     os.path.join(dest_dir, str(directory)))
 
-
-
-
+#from zipfile import ZipFile
 #with ZipFile(DATASET_FILE + ".zip","r") as myzip:
     #myzip.extractall('DATASET')
 
@@ -50,7 +50,6 @@ val_dir = 'valid'
 # Каталог с данными для тестирования
 test_dir = 'test'
 
-classes = [str(i) for i in range(0, 91, 10)]
 create_directory(train_dir, classes)
 create_directory(val_dir, classes)
 create_directory(test_dir, classes)
