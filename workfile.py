@@ -12,6 +12,10 @@ path_tar_metadata = "/content/gdrive/My Drive/Age_prediction/imdb_meta.tar"
 
 prepare_imdb_data(10, path_tar_data, path_tar_metadata, "IMDB_DATA")
 
+#data_preparation
+from data_preparation import prepare_zip_data
+path_zip_data = '/content/gdrive/My Drive/Age_prediction/appa-real-release.zip'
+prepare_zip_data(10, path_zip_data)
 
 #fit_model
 from fit_model import fit_model

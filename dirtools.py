@@ -23,3 +23,6 @@ def get_agedir(age, classes):
     age = floor(age)
     age *= period
     return str(age)
+
+def get_classes(period):
+    return [str(i) for i in range(0, 99, period)]
