@@ -51,11 +51,12 @@ model.save(save_model_path)
 #predict picture
 from predict_picture import ensemble_predictions
 from keras.models import load_model
+from dirtools import get_classes
 
 img_path = 'test/40/005642.jpg_face.jpg'
 
 members = [load_model('model')]         #write path
-classes = [i for i in range(0, 91, 10)] #CHECK testdata.class_indices!!!!
+classes = get_classes(10) #CHECK testdata.class_indices!!!!
 
 print(ensemble_predictions(members, img_path, classes))
 

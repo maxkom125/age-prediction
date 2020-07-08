@@ -25,4 +25,4 @@ def get_agedir(age, classes):
     return str(age)
 
 def get_classes(period):
-    return [str(i) for i in range(0, 99, period)]
+    return [str(i) for i in range(0, 100, period)]

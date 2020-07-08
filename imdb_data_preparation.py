@@ -16,6 +16,7 @@ from scipy.io import loadmat
 #sys.path.insert(1, '/content/gdrive/My Drive/Age_prediction') #path to dirtools.py
 from dirtools import create_directory
 from dirtools import get_agedir
+from dirtools import get_classes
 
 #classes = [str(i) for i in range(0, 91, 10)]
 #path_tar_data     = "/content/gdrive/My Drive/Age_prediction/imdb_crop.tar"
@@ -23,7 +24,7 @@ from dirtools import get_agedir
 
 def prepare_imdb_data(period, path_tar_data, path_tar_metadata, \
         sorted_data_locate, not_sorted_data_locate = None, metadata_locate = None):
-    classes = [str(i) for i in range(0, 99, period)]
+    classes = get_classes(period)
     if not_sorted_data_locate == None:
       not_sorted_data_locate = 'data_not_sorted_workfile_will_be_deleted'
     if metadata_locate == None:
