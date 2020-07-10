@@ -18,10 +18,6 @@ from dirtools import create_directory
 from dirtools import get_agedir
 from dirtools import get_classes
 
-#classes = [str(i) for i in range(0, 91, 10)]
-#path_tar_data     = "/content/gdrive/My Drive/Age_prediction/imdb_crop.tar"
-#path_tar_metadata = "/content/gdrive/My Drive/Age_prediction/imdb_meta.tar"
-
 def prepare_imdb_data(period, path_tar_data, path_tar_metadata, \
         sorted_data_locate, not_sorted_data_locate = None, metadata_locate = None):
     classes = get_classes(period)
@@ -44,7 +40,6 @@ def prepare_imdb_data(period, path_tar_data, path_tar_metadata, \
     #mat['imdb'][0][0][0][0] #dob #days from January 1, 0000
     #mat['imdb'][0][0][1][0] #yearphoto
     #mat['imdb'][0][0][2][0] #path: array([array(['01/nm0000001_rm124825600_1899-5-10_1968.jpg'],
-    #classes.append('notsorted')
 
     create_directory(train_dir, classes)
 
@@ -60,9 +55,6 @@ def prepare_imdb_data(period, path_tar_data, path_tar_metadata, \
         directory = get_agedir(apparent_age, classes)
         shutil.copy2(os.path.join(source_dir, impath), 
                           os.path.join(dest_dir, directory))
-
-    #shutil.rmtree(os.path.join(train_dir, 'notsorted'))
-    #classes = classes[:-1]
 
     if os.path.exists('data_not_sorted_workfile_will_be_deleted'):
         shutil.rmtree('data_not_sorted_workfile_will_be_deleted')

@@ -8,35 +8,6 @@ Created Jun 7 2020
 import numpy as np
 from matplotlib import pyplot as plt
 from predict_picture import ensemble_predictions
-
-#def ensemble_predictions(members, img_path, classes, show_image = True, image_size = (256, 256)):
-#	img = image.load_img(img_path, target_size=image_size)
-#	testim = image.img_to_array(img)
-#	testim = np.expand_dims(testim, axis=0)
-#	# Предсказания
-#	yhats = [model.predict(testim)[0] for model in members]
-#	yhats = np.array(yhats)
-#	#summed = np.sum(yhats, axis=0) / len(members)
-#	# argmax - наиболее вероятный возраст
-#	#result = np.argmax(summed, axis=1)
-#	#result = get_key(traindata.class_indices, result)
-#	#classes = [int(get_key(traindata.class_indices, i)) for i in range(len(yhats[0]))]
-#	classes = np.array(classes, dtype = int)
-#	ans = 0
-#	#Матожидание
-#    #Итоговое значение - среднее по всем элементам ансамбля
-#	for yhat in yhats:
-#		result = np.multiply(yhat, classes)
-#		result = np.sum(result)
-#		#print(result)
-#		ans += result
-#	ans /= len(members)
-#	if show_image:
-#            #print(yhats) вероятности
-#            plt.imshow(img)
-#            plt.show()
-#	return np.round(ans, decimals = 2)
-
 def get_real_predict(members, classes, datapaths, sort = False): #Two arrays
   predict = []
   real = []
@@ -86,8 +57,6 @@ def ensemble_metrics(members, testdata):
 
 #import operator
 def plt_predict_real(members, classes, datapaths):
-#  real_predict = dict(zip(get_real_predict(members, classes, datapaths)))
-#  real_predict = sorted(real_predict.items(), key=operator.itemgetter(2))
   real, predict = get_real_predict(members, classes, datapaths, sort = True)
   plt.figure(figsize=(50, 35))
   plt.plot(predict, 'bo') 

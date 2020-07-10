@@ -57,46 +57,6 @@ def prepare_zip_data(period = 1, path_zip_data = 'appa-real-release.zip', \
     
     if os.path.exists('data_not_sorted_workfile_will_be_deleted'):
         shutil.rmtree('data_not_sorted_workfile_will_be_deleted')
-    
-    # Каталог с набором данных
-    #data_dir = not_sorted_data_locate
-    #картинки
-    # Каталог с данными для обучения
-    #train_dir = 'train'
-    # Каталог с данными для проверки
-    #val_dir = 'valid'
-    # Каталог с данными для тестирования
-    #test_dir = 'test'
-    
-    #trainmetafile = 'gt_avg_train.csv'
-    #testnmetafile = 'gt_avg_test.csv'
-    #validmetafile = 'gt_avg_valid.csv'
-#    
-#    copy2_train_dir = sorted_data_locate[0]
-#    copy2_val_dir   = sorted_data_locate[1]
-#    copy2_test_dir  = sorted_data_locate[2]
-#    
-#    create_directory(copy2_train_dir, classes)
-#    create_directory(copy2_val_dir, classes)
-#    create_directory(copy2_test_dir, classes)
-#    
-#    trainfile = open(trainmetafile, 'r')
-#    testfile  = open(testnmetafile, 'r')
-#    validfile = open(validmetafile, 'r')
-#    
-#    for xfile in [trainfile, testfile, validfile]:
-#      imageinfo = xfile.readline().split(',')
-#      print(imageinfo)
-      
-    #копирование изображений в папки
-#    copy_images(trainfile, os.path.join(data_dir, train_dir), copy2_train_dir, classes)
-#    copy_images(validfile, os.path.join(data_dir, val_dir),   copy2_val_dir,   classes)
-#    copy_images(testfile,  os.path.join(data_dir, test_dir),  copy2_test_dir,  classes)
-    
-    #файлы прочитаны
-#    trainfile.close()
-#    testfile.close()
-#    validfile.close()
 
 def prepare_age_data(period, path_metafile, source_dir, dest_dir = 'sorted_data'):
     classes = get_classes(period)
