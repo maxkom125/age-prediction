@@ -43,7 +43,6 @@ def prepare_imdb_data(period, path_tar_data, path_tar_metadata, \
 
     create_directory(train_dir, classes)
 
-
     source_dir = data_not_sorted + '/imdb_crop'
     dest_dir = train_dir
 

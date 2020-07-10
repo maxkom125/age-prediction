@@ -29,12 +29,13 @@ def copy_images(path_metafile, source_dir, dest_dir, classes):
                     os.path.join(dest_dir, str(directory)))
     file.close()
     
-def prepare_zip_data(period = 1, path_zip_data = 'appa-real-release.zip', \
+def prepare_zip_data(path_zip_data = 'appa-real-release.zip',     \
                  sorted_data_locate = ['train', 'valid', 'test'], \
+                 period = 10,                                      \
                  prepare_data_dirs  = ['appa-real-release/train', \
                                        'appa-real-release/valid', \
                                        'appa-real-release/test'], \
-                metadata_files = ['appa-real-release/gt_avg_train.csv', \
+                metadata_files = ['appa-real-release/gt_avg_train.csv',  \
                                    'appa-real-release/gt_avg_valid.csv', \
                                    'appa-real-release/gt_avg_test.csv'], \
                  not_sorted_data_locate = None):
@@ -58,7 +59,7 @@ def prepare_zip_data(period = 1, path_zip_data = 'appa-real-release.zip', \
     if os.path.exists('data_not_sorted_workfile_will_be_deleted'):
         shutil.rmtree('data_not_sorted_workfile_will_be_deleted')
 
-def prepare_age_data(period, path_metafile, source_dir, dest_dir = 'sorted_data'):
+def prepare_age_data(path_metafile, source_dir, period = 10, dest_dir = 'sorted_data'):
     classes = get_classes(period)
     create_directory(dest_dir, classes)
     copy_images(path_metafile, source_dir, dest_dir, classes)

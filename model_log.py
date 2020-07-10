@@ -8,7 +8,7 @@ Created Jun 7 2020
 import numpy as np
 from matplotlib import pyplot as plt
 from predict_picture import ensemble_predictions
-def get_real_predict(members, classes, datapaths, sort = False): #Two arrays
+def get_real_predict(members, datapaths, sort = False): #Two arrays
   predict = []
   real = []
   if sort == True:
@@ -21,10 +21,10 @@ def get_real_predict(members, classes, datapaths, sort = False): #Two arrays
     class_name_end = path.find('/', class_name_start) - 1
     str_real = path[class_name_start: class_name_end + 1]    
     if sort == False:
-        predict.append(ensemble_predictions(members, path, classes, False))
+        predict.append(ensemble_predictions(members, path, False))
         real.append(int(str_real))
     else:
-        predict[int(str_real)].append(ensemble_predictions(members, path, classes, False))
+        predict[int(str_real)].append(ensemble_predictions(members, path, False))
         real[int(str_real)].append(int(str_real))
         
   if sort != False:
@@ -56,8 +56,8 @@ def ensemble_metrics(members, testdata):
   return ans
 
 #import operator
-def plt_predict_real(members, classes, datapaths):
-  real, predict = get_real_predict(members, classes, datapaths, sort = True)
+def plt_predict_real(members, datapaths):
+  real, predict = get_real_predict(members, datapaths, sort = True)
   plt.figure(figsize=(50, 35))
   plt.plot(predict, 'bo') 
   plt.legend('predict age')
@@ -68,8 +68,8 @@ def plt_predict_real(members, classes, datapaths):
   plt.show()
   return
 
-def plt_age_error(members, classes, datapaths):
-  real, predict = get_real_predict(members, classes, datapaths)
+def plt_age_error(members, datapaths):
+  real, predict = get_real_predict(members, datapaths)
   real    = np.array(real)
   predict = np.array(predict)
   #plt.figure(figsize=(50, 35))
