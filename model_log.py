@@ -8,7 +8,7 @@ Created Jun 7 2020
 import numpy as np
 from matplotlib import pyplot as plt
 from predict_picture import ensemble_predictions
-def get_real_predict(members, datapaths, sort = False): #Two arrays
+def _get_real_predict(members, datapaths, sort = False): #Two arrays
   predict = []
   real = []
   if sort == True:
@@ -57,7 +57,7 @@ def ensemble_metrics(members, testdata):
 
 #import operator
 def plt_predict_real(members, datapaths):
-  real, predict = get_real_predict(members, datapaths, sort = True)
+  real, predict = _get_real_predict(members, datapaths, sort = True)
   plt.figure(figsize=(50, 35))
   plt.plot(predict, 'bo') 
   plt.legend('predict age')
@@ -69,7 +69,7 @@ def plt_predict_real(members, datapaths):
   return
 
 def plt_age_error(members, datapaths):
-  real, predict = get_real_predict(members, datapaths)
+  real, predict = _get_real_predict(members, datapaths)
   real    = np.array(real)
   predict = np.array(predict)
   #plt.figure(figsize=(50, 35))

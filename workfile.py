@@ -9,7 +9,7 @@ from imdb_data_preparation import prepare_imdb_data
 path_tar_data     = "/content/gdrive/My Drive/Age_prediction/imdb_crop.tar"
 path_tar_metadata = "/content/gdrive/My Drive/Age_prediction/imdb_meta.tar"
 
-prepare_imdb_data(10, path_tar_data, path_tar_metadata, "IMDB_DATA")
+prepare_imdb_data(path_tar_data, path_tar_metadata, "IMDB_DATA", period = 10)
 
 #data_preparation
 from data_preparation import prepare_zip_data

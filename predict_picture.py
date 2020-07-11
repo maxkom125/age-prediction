@@ -8,10 +8,14 @@ from keras.preprocessing import image
 import numpy as np
 from matplotlib import pyplot as plt
 
-def ensemble_predictions(members, img_path, show_image = False, image_size = (256, 256)):
-    img = image.load_img(img_path, target_size=image_size)
-    testim = image.img_to_array(img)
-    testim = np.expand_dims(testim, axis=0)
+def ensemble_predictions(members, img, show_image = False, image_size = (256, 256)):
+    if type(img) == str: #если картинка подана в виде пути
+        img = image.load_img(img, target_size=image_size)
+    if type(img) != np.ndarray: #если картинка загружена keras.preprocessing.image
+        testim = image.img_to_array(img)
+        testim = np.expand_dims(testim, axis=0)
+    else:
+        testim = img
     # Предсказания
     yhats = [model.predict(testim)[0] for model in members]
     yhats = np.array(yhats)
@@ -27,7 +31,7 @@ def ensemble_predictions(members, img_path, show_image = False, image_size = (25
         result = np.sum(result)
         ans += result
     ans /= len(members)
-    if show_image:
+    if show_image and type(img) != np.ndarray: #только если загружена в необработанном формате
         #print(yhats) вероятности
         plt.imshow(img)
         plt.show()

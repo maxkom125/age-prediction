@@ -17,7 +17,7 @@ from dirtools import create_directory
 from dirtools import get_agedir
 from dirtools import get_classes
 
-def copy_images(path_metafile, source_dir, dest_dir, classes):
+def sort_images(path_metafile, source_dir, dest_dir, classes):
     file = open(path_metafile, 'r')
     file.readline()
     for line in file.readlines():
@@ -54,7 +54,7 @@ def prepare_zip_data(path_zip_data = 'appa-real-release.zip',     \
         meta   = os.path.join(not_sorted_data_locate,     metadata_files[i])
         source = os.path.join(not_sorted_data_locate,  prepare_data_dirs[i])
         dest   = sorted_data_locate[i]      
-        prepare_age_data(period, meta, source, dest)
+        prepare_age_data(meta, source, period, dest)
     
     if os.path.exists('data_not_sorted_workfile_will_be_deleted'):
         shutil.rmtree('data_not_sorted_workfile_will_be_deleted')
@@ -62,4 +62,4 @@ def prepare_zip_data(path_zip_data = 'appa-real-release.zip',     \
 def prepare_age_data(path_metafile, source_dir, period = 10, dest_dir = 'sorted_data'):
     classes = get_classes(period)
     create_directory(dest_dir, classes)
-    copy_images(path_metafile, source_dir, dest_dir, classes)
+    sort_images(path_metafile, source_dir, dest_dir, classes)

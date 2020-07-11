@@ -18,13 +18,13 @@ from dirtools import create_directory
 from dirtools import get_agedir
 from dirtools import get_classes
 
-def prepare_imdb_data(period, path_tar_data, path_tar_metadata, \
-        sorted_data_locate, not_sorted_data_locate = None, metadata_locate = None):
+def prepare_imdb_data(path_tar_data, path_tar_metadata, sorted_data_locate, \
+          period = 10, not_sorted_data_locate = None, metadata_locate = None):
     classes = get_classes(period)
     if not_sorted_data_locate == None:
-      not_sorted_data_locate = 'data_not_sorted_workfile_will_be_deleted'
+      not_sorted_data_locate = 'imdb_data_not_sorted_workfile_will_be_deleted'
     if metadata_locate == None:
-      metadata_locate = 'metadata_workfile_will_be_deleted'
+      metadata_locate = 'imdb_metadata_workfile_will_be_deleted'
 
     train_dir = sorted_data_locate              #path to locate sorted data
     data_not_sorted = not_sorted_data_locate    #path to locate not sorted data
@@ -55,7 +55,7 @@ def prepare_imdb_data(period, path_tar_data, path_tar_metadata, \
         shutil.copy2(os.path.join(source_dir, impath), 
                           os.path.join(dest_dir, directory))
 
-    if os.path.exists('data_not_sorted_workfile_will_be_deleted'):
-        shutil.rmtree('data_not_sorted_workfile_will_be_deleted')
-    if os.path.exists('metadata_workfile_will_be_deleted'):
-        shutil.rmtree('metadata_workfile_will_be_deleted')
+    if os.path.exists('imdb_data_not_sorted_workfile_will_be_deleted'):
+        shutil.rmtree('imdb_data_not_sorted_workfile_will_be_deleted')
+    if os.path.exists('imdb_metadata_workfile_will_be_deleted'):
+        shutil.rmtree('imdb_metadata_workfile_will_be_deleted')
