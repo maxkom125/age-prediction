@@ -51,8 +51,8 @@ class AgePredictor:
         self.__val_dir   = None
         self.__history   = None    
     
-    def predict(self, img_path): #float age
-        return ensemble_predictions(self.__members, img_path)
+    def predict(self, image): #float age
+        return ensemble_predictions(self.__members, image)
     
     def summary(self):
         for model in self.__members:
