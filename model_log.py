@@ -79,6 +79,32 @@ def plt_age_error(members, datapaths):
   plt.show()
   return
 
+def history(agepredictor):
+    i = 0
+    for history in agepredictor.history:
+        if history == None:
+            print('model ' + str(i) + ' history is empty')
+        else:
+            print(history.history.keys())
+            # summarize history for accuracy
+            plt.plot(history.history['accuracy'])
+            plt.plot(history.history['val_accuracy'])
+            plt.title('model accuracy')
+            plt.ylabel('accuracy')
+            plt.xlabel('epoch')
+            plt.legend(['train', 'val'], loc='upper left')
+            plt.show()
+            # summarize history for loss
+            plt.plot(history.history['loss'])
+            plt.plot(history.history['val_loss'])
+            plt.title('model loss')
+            plt.ylabel('loss')
+            plt.xlabel('epoch')
+            plt.legend(['train', 'val'], loc='upper left')
+            plt.show()
+        i += 1
+    return
+
 
 
 
