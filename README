@@ -1,2 +1,3 @@
+После POST запроса из flask_work
 GET запрос возвращает:
-[('Harry Potter', '13.72'), ('Hermione Granger', '19.5')]
+{'Harry Potter': '13.72', 'Hermione Granger': '19.5'}
