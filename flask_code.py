@@ -12,7 +12,7 @@ from class_faceimage import FaceImage
 
 app = Flask(__name__)
 
-agehistory = ['No information']        
+agehistory = [{}]        
 
 @app.route('/', methods=['GET', 'POST'])
 def home_page(): 
@@ -37,11 +37,11 @@ def home_page():
             age = str(age)
             local_history.append((names[i], age))
             i += 1
-        agehistory.append(local_history)
+        agehistory.append(dict(local_history))
         
-        return jsonify({ 'age' : str(agehistory[-1]) })
+        return jsonify(agehistory[-1])
     if request.method == 'GET':
-        return jsonify({ 'age' : str(agehistory[-1]) })
+        return jsonify(agehistory[-1])
         
 if __name__ == '__main__':
     app.run() #debug = True
