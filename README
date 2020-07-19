@@ -1,0 +1,2 @@
+GET запрос возвращает:
+[('Harry Potter', '13.72'), ('Hermione Granger', '19.5')]
