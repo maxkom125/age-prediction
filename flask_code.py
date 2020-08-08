@@ -5,16 +5,12 @@ Created on Thu Jul 16 2020
 @author: Maksym Komarov
 """    
 from flask import request, Flask, jsonify
-import sys
-sys.path.insert(1, 'E:/Maksym/GitHub/age-prediction') #path to files
 from class_agepredictor import AgePredictor
 from class_faceimage import FaceImage
 
-app = Flask(__name__)
+app = Flask(__name__)      
 
-agehistory = [{}]        
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['POST'])
 def home_page(): 
     if request.method == 'POST':
         ServerAgePredictor = AgePredictor('E:/Maksym/GitHub/age-prediction/modelFINAL0')
@@ -37,11 +33,8 @@ def home_page():
             age = str(age)
             local_history.append((names[i], age))
             i += 1
-        agehistory.append(dict(local_history))
         
-        return jsonify(agehistory[-1])
-    if request.method == 'GET':
-        return jsonify(agehistory[-1])
+        return jsonify(dict(local_history))
         
 if __name__ == '__main__':
     app.run() #debug = True
