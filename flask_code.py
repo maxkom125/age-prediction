@@ -1,3 +1,4 @@
+# CODE NEEDS IMPROVEMENT
 # -*- coding: utf-8 -*-
 """
 Created on Thu Jul 16 2020
@@ -13,7 +14,7 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def home_page(): 
     if request.method == 'POST':
-        ServerAgePredictor = AgePredictor('E:/Maksym/GitHub/age-prediction/modelFINAL0')
+        ServerAgePredictor = AgePredictor('E:/Maksym/GitHub/age-prediction/modelFINAL0') # Bad place to create
         data = request.form.to_dict()
         images = []
         names = []
