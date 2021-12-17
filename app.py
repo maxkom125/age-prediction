@@ -9,12 +9,13 @@ from flask import request, Flask, jsonify
 from class_agepredictor import AgePredictor
 from class_faceimage import FaceImage
 
+ServerAgePredictor = AgePredictor('/media/maksym/Files/Programs/age-prediction/modelFINAL0') 
+
 app = Flask(__name__)      
 
 @app.route('/', methods=['POST'])
 def home_page(): 
     if request.method == 'POST':
-        ServerAgePredictor = AgePredictor('E:/Maksym/GitHub/age-prediction/modelFINAL0') # Bad place to create
         data = request.form.to_dict()
         images = []
         names = []
@@ -35,10 +36,10 @@ def home_page():
             local_history.append((names[i], age))
             i += 1
         
-        return jsonify(dict(local_history))
+        return jsonify(dict(local_history)) 
         
 if __name__ == '__main__':
-    app.run() #debug = True
+    app.run() #debug = True 
     
     
     
