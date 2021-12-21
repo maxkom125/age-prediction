@@ -29,7 +29,7 @@ GET запрос возвращает:
 
 ![errors_ages1](https://github.com/maxkom125/age-prediction/blob/master/readme_images/errors_ages1.png)
 
-![errors_ages2](readme_images/errors_ages2.png)
+![errors_ages2](/assets/readme_images/errors_ages2.png)
 
 Учитывая то, что на выходе сети всего 10 нейронов, точность отличная.
 
