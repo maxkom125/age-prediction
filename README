@@ -6,7 +6,7 @@
 На выходе из нейронной сети находятся 10 нейронов с вероятностями того, что возраст человека на картинке 0, 10, 20 ... 90 лет.
 Веротности домнажаются на соответсвующие возраста и получается итоговый результат.
 
-![Vann Damm](https://github.com/maxkom125/age-prediction/blob/master/readme_images/Van_Damm.png?raw=true)
+![Vann Damm](readme_images/Van_Damm.png)
 
 Выход сети (вероятности):
 [7.8617661e-05 4.1818799e-05 1.3618891e-03 1.5115111e-01 4.8627153e-01
@@ -26,7 +26,7 @@ GET запрос возвращает:
 
 Точность: Средняя абсолютная ошибка предсказания: 6 лет.
 
-![errors_ages1](https://github.com/maxkom125/age-prediction/blob/master/readme_images/errors_ages1.png)
+![errors_ages1](https://github.com/maxkom125/age-prediction/blob/69752c7fa4c666a0ac7d636dd56945f15820c36e/readme_images/Van_Damm.png)
 
 ![errors_ages2](/assets/readme_images/errors_ages2.png)
 
