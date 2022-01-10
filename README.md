@@ -27,6 +27,7 @@ GET запрос возвращает:
 Точность: Средняя абсолютная ошибка предсказания: 6 лет.
 
 ![errors_ages1](readme_images/errors_ages1.png)
+
 ![errors_ages2](readme_images/errors_ages2.png)
 
 ![index](readme_images/index.png)
