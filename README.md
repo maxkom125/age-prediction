@@ -26,9 +26,10 @@ GET запрос возвращает:
 
 Точность: Средняя абсолютная ошибка предсказания: 6 лет.
 
-![errors_ages1](https://github.com/maxkom125/age-prediction/blob/69752c7fa4c666a0ac7d636dd56945f15820c36e/readme_images/Van_Damm.png)
+![errors_ages1](readme_images/errors_ages1.png)
+![errors_ages2](readme_images/errors_ages2.png)
 
-![errors_ages2](/assets/readme_images/errors_ages2.png)
+![index](readme_images/index.png)
 
 Учитывая то, что на выходе сети всего 10 нейронов, точность отличная.
 
