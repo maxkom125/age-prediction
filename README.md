@@ -1,37 +1,43 @@
-Идея проекта: Предсказание возраста человека по фото.
+# Deep expectation of apparent age from a single image
 
-Реализация: Реализована возможность тренировки ансамбля нейросетей и предобучена нейронная сеть, выполняющая заданную функцию.
-Датасет: Открытый датасет IMDB.
+Implemented the ability to train an ensemble of neural networks and pre-trained a neural network that performs apparent age estimation.
 
-На выходе из нейронной сети находятся 10 нейронов с вероятностями того, что возраст человека на картинке 0, 10, 20 ... 90 лет.
-Веротности домнажаются на соответсвующие возраста и получается итоговый результат.
+Related article:
+DEX: Deep EXpectation of apparent age from a single image
+(Rasmus Rothe, Radu Timofte, Luc Van Gool
+Computer Vision Lab, D-ITET, ETH Zurich, Switzerland)
+
+Datasets: 
+1. Open IMDB dataset (https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/)
+2. APPA-REAL (real and apparent age)(https://chalearnlap.cvc.uab.cat/dataset/26/description/)
+3. ImageNet
+
+Example:
 
 ![Vann Damm](readme_images/Van_Damm.png)
-
-Выход сети (вероятности):
-[7.8617661e-05 4.1818799e-05 1.3618891e-03 1.5115111e-01 4.8627153e-01
-  3.5335889e-01 7.2211353e-03 4.6008208e-04 5.0354280e-05 4.6020446e-06]
  
-Выход сети (возраст):
+Model output (age):
 42.15
 
-Для того, чтобы этим решением можно было воспользоваться в иных проектах, реализован запуск сервера (app.py).
-Использование сервера очень просто: аналогично примеру (Simple_post.py).
-После запроса с фотографией мы получаем возраст.
+In order for this solution to be used in other projects, the launch of the server (app.py) has been implemented.
+Using the server is very simple: check the example (Simple_post.py).
+After a request with a photo, we get the age.
 
-После POST запроса из Simple_post
-GET запрос возвращает:
+After POST request from Simple_post.py
+GET request returns:
 {'Harry Potter': '13.72', 'Hermione Granger': '19.5'}
-Картинки можно посмотреть в папке images
+Images are in the images folder.
 
-Точность: Средняя абсолютная ошибка предсказания: 6 лет.
+Accuracy: Average absolute prediction error: 6 years.
 
 ![errors_ages1](readme_images/errors_ages1.png)
 
+Model prediction and labels (All ages have been rounded to the nearest tens).
+
+At the output of the neural network there are 10 neurons with probabilities corresponded to 0, 10, 20 ... 90 years. The probabilities are assigned to the corresponding ages and the final result is obtained.
+
 ![errors_ages2](readme_images/errors_ages2.png)
 
-Учитывая то, что на выходе сети всего 10 нейронов, точность отличная.
-
-Точность можно улучшать, используя более долгое обучение и немного увеличив количество нейронов в полносвязных частях сети 
-(в соответствии с исходной архитектурой VGG16). Но пока в этом нет необходимости.
-
+Google colab was used to train the model.
+Accuracy can be improved by using longer training and increasing the number of neurons in fully connected parts of the network
+(according to the original VGG16 architecture).
