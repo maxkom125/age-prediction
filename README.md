@@ -1,4 +1,4 @@
-# Deep expectation of apparent age from a single image
+# Apparent age prediction from a single image
 
 Implemented the ability to train an ensemble of neural networks and pre-trained a neural network that performs apparent age estimation.
 
